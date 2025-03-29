@@ -1,0 +1,8 @@
+C:/Users/AdminOS/Documents/QT Projects/SignUp_2/build/Desktop_Qt_6_8_2_MSVC2022_64bit-Debug/CMakeFiles/SignUp.dir
+C:/Users/AdminOS/Documents/QT Projects/SignUp_2/build/Desktop_Qt_6_8_2_MSVC2022_64bit-Debug/CMakeFiles/edit_cache.dir
+C:/Users/AdminOS/Documents/QT Projects/SignUp_2/build/Desktop_Qt_6_8_2_MSVC2022_64bit-Debug/CMakeFiles/rebuild_cache.dir
+C:/Users/AdminOS/Documents/QT Projects/SignUp_2/build/Desktop_Qt_6_8_2_MSVC2022_64bit-Debug/CMakeFiles/list_install_components.dir
+C:/Users/AdminOS/Documents/QT Projects/SignUp_2/build/Desktop_Qt_6_8_2_MSVC2022_64bit-Debug/CMakeFiles/install.dir
+C:/Users/AdminOS/Documents/QT Projects/SignUp_2/build/Desktop_Qt_6_8_2_MSVC2022_64bit-Debug/CMakeFiles/install/local.dir
+C:/Users/AdminOS/Documents/QT Projects/SignUp_2/build/Desktop_Qt_6_8_2_MSVC2022_64bit-Debug/CMakeFiles/SignUp_autogen_timestamp_deps.dir
+C:/Users/AdminOS/Documents/QT Projects/SignUp_2/build/Desktop_Qt_6_8_2_MSVC2022_64bit-Debug/CMakeFiles/SignUp_autogen.dir
