@@ -2,17 +2,17 @@
 using namespace std;
 
 int freq[26] = {};
-int n;
+int N;
 int longest_word();
 
 int main()
 {
-    cin >> n;
-    char word[n];
-    for (int i = 0; i < n; i++)
+    cin >> N;
+    char word[N];
+    for (int i = 0; i < N; i++)
         cin >> word[i];
 
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < N; i++)
         freq[word[i] - 97]++;
 
     int q;

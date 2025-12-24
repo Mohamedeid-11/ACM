@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="page"></h1>
+    <script>
+        
+        /*
+
+        Run javascript files:   node file_name.js 
+        
+        Keywords:
+            var         Declares a variable (old, can NOT have block scope)
+            let	        Declares a block variable
+            const	    Declares a block constant
+            if	        Marks a block of statements to be executed on a condition
+            switch	    Marks a block of statements to be executed in different cases
+            for 	    Marks a block of statements to be executed in a loop
+            function    Declares a function
+            return  	Exits a function
+            try	        Implements error handling to a block of statements
+        .
+
+        Template String:    `Hello ${name}! You are ${age} years old.`;
+        */
+
+        // Variables
+        let x = 5;
+        const fname = "John";
+
+        // Array
+            const fruits = ["Banana", "Orange", "Apple"];
+
+            // Javascript arrays are dynamic:
+            fruits[fruits.length] = "Lemon";  // Adds "Lemon" to fruits
+
+            // Declaring an empty array
+            let emptyArray = [];
+            let myArray = new Array(); // using the constructor is also valid
+
+            // Methods:
+            /*
+            push():     Adds one or more elements to the end of an array and returns the new length.
+            pop():      Removes the last element from an array and returns that element.
+            shift():    Removes the first element from an array and returns that element.
+            unshift():  Adds one or more elements to the beginning of an array and returns the new length.
+            splice():   Changes the contents of an array by removing or replacing existing elements and/or adding new elements in place. Returns an array containing the deleted elements.
+            sort():     Sorts the elements of an array in place and returns the sorted array. Default sort is lexicographical; a custom comparison function can be provided.
+            reverse():  Reverses the order of the elements in an array in place and returns the reversed array.
+            fill(): F   ills all the elements of an array from a start index to an end index with a static value. 
+            */
+
+           // Sort
+           const numbers = [34, 6, 20, -1];
+           numbers.sort((a, b) => a - b);      // Ascending order
+           numbers.sort((a, b) => b - a);      // Descending order
+
+
+        //
+        
+        // Functions
+        function greet(name, age) 
+        {
+            return `Hello ${name}! You are ${age} years old.`; // Template String
+        }
+        // Arrow function
+        let greet_V2 = (name, age) => `Hello ${name}! You are ${age} years old.`; 
+        document.getElementById("page").innerText = greet_V2("Mohamed", 19);
+
+
+        /* Objects
+        You should declare objects with the const keyword.
+        It does not make the object unchangeable. You can still modify its properties and values */
+        const car = {type:"Fiat", year: 1999, color:"Black"};
+
+        car.license = "ABC - 123";  // add new properity
+        car["type"] = "BMW";        // way #1 to access a property
+        car.year = 2022;            // way #2 to access a property
+
+        // To create an object type we use an (object constructor) function.
+        function Car(type_input, year_input, color_input, license_input) 
+        {
+          this.type = type_input;
+          this.year = year_input;
+          this.color = color_input;
+          this.license = license_input;
+          this.honk = function()
+          {
+            document.getElementById("page").innerText = "beeb beeb!";
+          }
+        }
+        // Create a Car object
+        const my_car = new Car("BMW", 2022, "Black", "ABS - 123");
+        my_car.honk();
+
+
+    </script>
+</body>
+</html>
