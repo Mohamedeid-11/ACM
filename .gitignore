@@ -1,2 +1,4 @@
-/.vscode
-/General
+.vscode
+**/.vscode/
+**/output/
+.exe
