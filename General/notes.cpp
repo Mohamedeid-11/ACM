@@ -274,6 +274,7 @@ cout << "num relativity to 5 is " << (num > 5 ? "greater" : (num < 5 ? "lower" :
 bool hasNoDecimal(double x)
 {
     double integer_part = trunc(x);
+    //(3.001 - 3) or (2.999 - 3) 
     return abs(x - integer_part) < 1e-9 || abs(x - integer_part) > (1 - 1e-9);
 }
 
@@ -289,14 +290,18 @@ bool hasNoDecimal(double x)
     }
 
     // iterate over pairs
-        for(auto [num, ocurances] : numbers)
-        {
-            if(ocurances % 2 == 1) 
-            {
-                cout << num << endl;
-                break;
-            }
-        }
+    for(auto [first, second] : numbers)
+    {
+        cout << first << ' ' << second << '\n';
+    }
+
+    // prefix_sum
+    int runningSum = 0;
+    for (auto& [key, value] : freq) 
+    {
+        runningSum += value;
+        value = runningSum;
+    }
 //
 
 /* Partial Sum
@@ -309,6 +314,23 @@ bool hasNoDecimal(double x)
     arr = [1,0,0,−1,0,0]
     arr = [1, 1, 1, 0, 0, 0]  // after prefix sum
 */
+
+
+/* How to solve Binary Search problems:
+    1. Define a sorted search space (monotonic range (moves in one direction))
+    2. Define a "Target" or a "Condition"
+
+    When to use Binary Search:
+    - Searching for an element in a sorted array
+    - Finding the first or last occurrence of an element
+    
+    - Optimization problems: 
+      Most number of burgers that don't exceed the budget (Level 1\weeks\week 4\sheet\B_Hamburgers.cpp)
+
+    Complexity:
+    - Time Complexity: O(log N) — the search space halves every step
+*/ 
+
 
 /* How to solve recursion problems:
     1. Define the problem
@@ -371,6 +393,53 @@ bool hasNoDecimal(double x)
             S = 1^2 + 2^2 + 3^2 .... n^2   -->      n(n+1)(2n+2)/6
     end 
 
+    Prime and Factors
+        any number can be represented by its prime factors: n = p1^α1 * p2^α2··· pk^αk,
+        84 = (2^2) * (3^1) * (7^1)
+
+        so to form a factor you can use 2 --> 0, 1, or 2 times and 3 --> 0, or 1 times and so on
+        so number of factors (compination) = (α1 + 1) * (α2 + 1) * ...
+        84 --> 3 * 2 * 2 = 12
+
+        cout << "prime factors of n are : ";
+        for (int i = 2; i * i <= n; i++)
+        {
+            while (n % i == 0)
+            {
+                n /= i;
+                cout << i << " ";
+            }
+        }
+        if(n > 1) cout << n;            // the number itself might be prime so it would be greater than sqrt(n)
+    end
+
+    LCM - GCD
+        Gratest Common Divisior(GCD) is the greatest number that can divide both a and b
+        gcd(4, 6) = 2, list devisors:
+        4 --> 1, (2), 4
+        6 --> 1, (2), 3, 6
+
+        - To simplify two numbers(x, y) --> devide them by their gcd(x, y)
+            int GCD = gcd(num1, num2);
+            int simplified_num1 = num1/GCD;
+
+        Least Common Multiple(LCM)   is the smallest number that is a multiple of a and b  
+        lcm(4, 6) = 12, list multiples:
+        4 --> 4, 8, (12)
+        6 --> 6, (12)
+
+        - We can use prime factors:
+            4 = 2^2 * 3^0
+            6 = 2^1 * 3^1
+
+            gcd(4, 6) = 2^1 * 3^0 = 2                       (use least powers)
+            lcm(4, 6) = 2^2 * 3^1 = 12                      (use greatest powers)
+
+            gcd(4, 6) * lcm(4, 6) = 2^3 * 3^1 = 4 * 6 = 24
+
+        - lcm(a,b) * gcd(a,b) = a * b     
+    END
+
     Bits
     x is divisible by 2^k when:     x & (2^k − 1) = 0
 
@@ -397,6 +466,10 @@ bool hasNoDecimal(double x)
 */
 
 // Bits
+    // devide by 2
+        x = x >> 1;
+    // multiply by 2
+        x = x << 1;
     // Read bits | Get binary representation
         // instead of 31 you can get use the number of bits that contains x --> log2(x)  
         // (we didn't round up as (i) reaches 0)
@@ -428,7 +501,7 @@ bool hasNoDecimal(double x)
 
     // Set
     // since int has 31 bits and we can edit each one of them, we can use it to hold a set range (0 : 31)
-        // x = {1,3,4,8)    we can represeant it through:
+        // x = {1,3,4,8}    we can represeant it through:
         int x = (1<<1)|(1<<3)|(1<<4)|(1<<8);
 
 

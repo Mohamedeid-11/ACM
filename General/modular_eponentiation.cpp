@@ -8,10 +8,10 @@ typedef unsigned long long ull;
 int recursive_expMod(int x, int n, int m)
 {
     if (n == 0)
-        return 1 % m;
+        return 1;
 
     // get x^(n/2) 
-    ull u = modpow(x, n / 2, m);
+    ull u = recursive_expMod(x, n / 2, m);
 
     // x^n = x^(n/2) * x^(n/2)
     u = (u * u) % m;

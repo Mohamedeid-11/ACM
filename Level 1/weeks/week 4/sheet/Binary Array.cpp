@@ -1,59 +1,52 @@
-#include <iostream>
-#include <algorithm>
-
+#include <bits/stdc++.h>
 using namespace std;
+typedef unsigned long long ull;
+
+int G(ull x)
+{
+    int ones = 0;
+    while(x)
+    {
+        ones += (x & 1);
+        x >>= 1;
+    }
+    return ones;
+}
 
 int main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
-
-    int n;
-    cin >> n;
-
-    unsigned long long a[n];
-    for (int i = 0; i < n; i++)
-        cin >> a[i];
-
-    int b[n];
-    for (int i = 0; i < n; i++)
+    int n; cin >> n;
+    ull a[n], b[n], s[n];
+    for(int i=0;i<n;i++) cin >> a[i];
+    for(int i=0;i<n;i++) 
+    {
         cin >> b[i];
-
-    for (int i = 0; i < n; i++)
-    {
-        unsigned long long ones = 0;
-        while (a[i])
-        {
-            if (a[i] & 1)
-                ones++;
-            a[i] >>= 1;
-        }
-        a[i] = ones * b[i];
+        s[i] = G(a[i]) * b[i];
     }
-    sort(a, a + n);
+    sort(s, s + n);
 
-    int q;
-    cin >> q;
-    for (int i = 0; i < q; i++)
+    int q; cin >> q;
+    while (q--)
     {
-        unsigned long long k;
-        cin >> k;
+        ull k; cin >> k;
 
-        int ans = -1, start = 0, end = n - 1, mid;
-        while (start <= end)
+        // binary search to count how many elements in s are <= k
+        int ans = -1; // assume no elements <= k
+        int start = 0, end = n - 1, mid;
+        while (start <= end) 
         {
             mid = (start + end) / 2;
 
-            if (a[mid] <= k)
+            if (s[mid] <= k) 
             {
-                ans = mid;
-                start = ++mid;
-            }
-            else
-                end = --mid;
+                ans = mid;      // This element is a candidate, 
+                start = mid + 1; // but look for a larger index further right
+            } 
+            else end = mid - 1;
         }
-        cout << ans + 1 << endl;
+        
+        cout << ans + 1 << endl;     // 0 index to 1 index
     }
-
-    return 0;
 }
+
+
